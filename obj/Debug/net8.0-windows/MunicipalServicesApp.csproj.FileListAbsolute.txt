@@ -1,0 +1,17 @@
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\bin\Debug\net8.0-windows\MunicipalServicesApp.exe
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\bin\Debug\net8.0-windows\MunicipalServicesApp.deps.json
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\bin\Debug\net8.0-windows\MunicipalServicesApp.runtimeconfig.json
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\bin\Debug\net8.0-windows\MunicipalServicesApp.dll
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\bin\Debug\net8.0-windows\MunicipalServicesApp.pdb
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.MainMenuForm.resources
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.csproj.GenerateResource.cache
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.AssemblyInfoInputs.cache
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.AssemblyInfo.cs
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.csproj.CoreCompileInputs.cache
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.dll
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\obj\Debug\net8.0-windows\refint\MunicipalServicesApp.dll
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.pdb
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.genruntimeconfig.cache
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\obj\Debug\net8.0-windows\ref\MunicipalServicesApp.dll
+C:\Users\OEM\Documents\Visual Studio 2022\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.ReportIssueForm.resources

@@ -1,0 +1,123 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F12F4149-F47F-4641-A07D-C18D48C33A8A}|MunicipalServicesApp.csproj|C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\reportissueform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12F4149-F47F-4641-A07D-C18D48C33A8A}|MunicipalServicesApp.csproj|solutionrelative:reportissueform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12F4149-F47F-4641-A07D-C18D48C33A8A}|MunicipalServicesApp.csproj|C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\data\\issuerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12F4149-F47F-4641-A07D-C18D48C33A8A}|MunicipalServicesApp.csproj|solutionrelative:data\\issuerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12F4149-F47F-4641-A07D-C18D48C33A8A}|MunicipalServicesApp.csproj|c:\\users\\oem\\documents\\visual studio 2022\\municipalservicesapp\\mainmenuform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12F4149-F47F-4641-A07D-C18D48C33A8A}|MunicipalServicesApp.csproj|solutionrelative:mainmenuform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12F4149-F47F-4641-A07D-C18D48C33A8A}|MunicipalServicesApp.csproj|C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\data\\datasaverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12F4149-F47F-4641-A07D-C18D48C33A8A}|MunicipalServicesApp.csproj|solutionrelative:data\\datasaverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F12F4149-F47F-4641-A07D-C18D48C33A8A}|MunicipalServicesApp.csproj|c:\\users\\oem\\documents\\visual studio 2022\\municipalservicesapp\\models\\issue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F12F4149-F47F-4641-A07D-C18D48C33A8A}|MunicipalServicesApp.csproj|solutionrelative:models\\issue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 111,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1a46fd64-28d5-434c-8eb3-17a02d419b53}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainMenuForm.cs",
+              "DocumentMoniker": "C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\MainMenuForm.cs",
+              "RelativeDocumentMoniker": "MainMenuForm.cs",
+              "ToolTip": "C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\MainMenuForm.cs",
+              "RelativeToolTip": "MainMenuForm.cs",
+              "ViewState": "AQIAADwAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T21:06:57.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DataSaverService.cs",
+              "DocumentMoniker": "C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\Data\\DataSaverService.cs",
+              "RelativeDocumentMoniker": "Data\\DataSaverService.cs",
+              "ToolTip": "C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\Data\\DataSaverService.cs",
+              "RelativeToolTip": "Data\\DataSaverService.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAowIEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T14:18:02.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IssueRepository.cs",
+              "DocumentMoniker": "C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\Data\\IssueRepository.cs",
+              "RelativeDocumentMoniker": "Data\\IssueRepository.cs",
+              "ToolTip": "C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\Data\\IssueRepository.cs",
+              "RelativeToolTip": "Data\\IssueRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T12:57:44.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReportIssueForm.cs",
+              "DocumentMoniker": "C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\ReportIssueForm.cs",
+              "RelativeDocumentMoniker": "ReportIssueForm.cs",
+              "ToolTip": "C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\ReportIssueForm.cs",
+              "RelativeToolTip": "ReportIssueForm.cs",
+              "ViewState": "AQIAAKYBAAAAAAAAAAAcwC8CAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T13:27:06.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Issue.cs",
+              "DocumentMoniker": "C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\Models\\Issue.cs",
+              "RelativeDocumentMoniker": "Models\\Issue.cs",
+              "ToolTip": "C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\Models\\Issue.cs",
+              "RelativeToolTip": "Models\\Issue.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T21:06:24.6Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 289,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
