@@ -9,7 +9,7 @@ namespace MunicipalServicesApp.Models
     // Core issue record stored in-memory (Part 1)
     public class Issue
     {
-        public string TicketNumber { get; set; }          // e.g., "MS-1A2B3C4D"
+        public string TicketNumber { get; set; }         
         public string Location { get; set; }               // nearest address / landmark  (Microsoft, 2025)
         public IssueCategory Category { get; set; }        // type of service problem
         public string Description { get; set; }            // user-entered details
