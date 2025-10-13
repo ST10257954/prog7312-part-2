@@ -20,14 +20,16 @@ namespace MunicipalServicesApp
         private void InitializeComponent()
         {
             SuspendLayout();
-
+            // 
+            // MainMenuForm
+            // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1000, 640);
             Name = "MainMenuForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Municipal Services";
-
+            Load += MainMenuForm_Load;
             ResumeLayout(false);
         }
     }

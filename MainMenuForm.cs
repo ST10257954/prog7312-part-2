@@ -153,7 +153,10 @@ namespace MunicipalServicesApp
             }
 
             var btnReport = MakePrimary("▶  Report Issues");
-            var btnEvents = MakeGhost("Local Events & Announcements (coming soon)");
+
+            var btnEvents = MakePrimary("▶  Local Events & Announcements");
+            btnEvents.Click += btnEvents_Click;
+
             var btnStatus = MakeGhost("Service Request Status (coming soon)");
 
             rows.Controls.Add(btnReport, 0, 0);
@@ -167,7 +170,19 @@ namespace MunicipalServicesApp
                 dlg.ShowDialog(this);
             };
 
+
+
             AcceptButton = btnReport;
+        }
+        private void btnEvents_Click(object sender, EventArgs e)
+        {
+            EventsForm eventsForm = new EventsForm();
+            eventsForm.ShowDialog();
+        }
+
+        private void MainMenuForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
