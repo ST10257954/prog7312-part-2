@@ -65,7 +65,7 @@
             btnSearch.Location = new Point(530, 90);
             btnSearch.Click += btnSearch_Click;
 
-            // --- Show All Button (hidden at start) ---
+            // --- Show All Button ---
             btnShowAll.Text = "Show All Events";
             btnShowAll.Font = new Font("Segoe UI Semibold", 11);
             btnShowAll.BackColor = Color.FromArgb(27, 94, 32);
@@ -73,7 +73,7 @@
             btnShowAll.FlatStyle = FlatStyle.Flat;
             btnShowAll.Size = new Size(150, 32);
             btnShowAll.Location = new Point(640, 90);
-            btnShowAll.Visible = false; // hidden by default
+            btnShowAll.Visible = false;
             btnShowAll.Click += btnShowAll_Click;
 
             // --- DataGridView ---
@@ -95,7 +95,7 @@
             lblRecommendations.Size = new Size(700, 80);
             lblRecommendations.Text = "Recommendations will appear here...";
 
-            // --- Back to Main Menu Button ---
+            // --- Back to Main Menu ---
             btnBack.Text = "Back to Main Menu";
             btnBack.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             btnBack.BackColor = Color.FromArgb(46, 125, 50);
@@ -105,8 +105,10 @@
             btnBack.Location = new Point(720, 580);
             btnBack.Click += btnBack_Click;
 
-            // --- Add Controls ---
-            Controls.AddRange(new Control[] { header, txtSearch, btnSearch, btnShowAll, dgvEvents, lblRecommendations, btnBack });
+            Controls.AddRange(new Control[]
+            {
+                header, txtSearch, btnSearch, btnShowAll, dgvEvents, lblRecommendations, btnBack
+            });
         }
     }
 }
