@@ -9,46 +9,37 @@ namespace MunicipalServicesApp
 {
     public partial class EventsForm : Form
     {
-        // ---- Data Structures ----
         private readonly SortedDictionary<DateTime, List<Event>> eventsByDate = new();
-        private readonly HashSet<string> eventCategories = new();
-        private readonly Queue<string> recentSearches = new();
-        private readonly PriorityQueue<Event, int> recommendations = new();
-        private readonly Stack<Event> viewedEvents = new(); // track recently viewed
 
         public EventsForm()
         {
             InitializeComponent();
-            this.Load += EventsForm_Load;
+            Load += EventsForm_Load;
         }
 
         private void EventsForm_Load(object sender, EventArgs e)
         {
-            // theme setup
-            this.BackColor = Color.WhiteSmoke;
-            this.Font = new Font("Segoe UI", 10);
-
-            // preload events
-            AddEvent("Community Clean-Up", new DateTime(2025, 11, 5),
-                "Environment", "Join us to clean local parks.");
-            AddEvent("Heritage Day Celebration", new DateTime(2025, 9, 24),
-                "Cultural", "Parade and food market.");
-            AddEvent("Job Fair", new DateTime(2025, 10, 28),
-                "Employment", "Meet local companies hiring youth.");
-            AddEvent("Art in the Park", new DateTime(2025, 12, 10),
-                "Arts", "Outdoor art exhibition and workshops.");
+            // --- Demo events ---
+            AddEvent("Heritage Day Celebration", new DateTime(2025, 9, 24), "Cultural", "Parade and food market.");
+            AddEvent("Heritage Business Expo", new DateTime(2025, 10, 25), "Business", "Support local businesses.");
+            AddEvent("Job Fair", new DateTime(2025, 10, 28), "Employment", "Meet local companies hiring youth.");
+            AddEvent("Community Health Day", new DateTime(2025, 10, 30), "Health", "Free screening & nutrition tips.");
+            AddEvent("Community Clean-Up", new DateTime(2025, 11, 5), "Environment", "Join us to clean local parks.");
+            AddEvent("Youth Coding Bootcamp", new DateTime(2025, 11, 15), "Education", "Intro to coding for beginners.");
+            AddEvent("Recycling Awareness Week", new DateTime(2025, 11, 20), "Environment", "Learn to recycle smartly.");
+            AddEvent("Sports Day at the Stadium", new DateTime(2025, 11, 22), "Sports", "Family-friendly sports day.");
+            AddEvent("Holiday Food Drive", new DateTime(2025, 12, 5), "Charity", "Donate food & support families.");
+            AddEvent("Art in the Park", new DateTime(2025, 12, 10), "Arts", "Outdoor art exhibition & workshops.");
 
             DisplayEvents();
+            btnShowAll.Visible = false;
         }
 
         private void AddEvent(string title, DateTime date, string category, string description)
         {
             if (!eventsByDate.ContainsKey(date))
                 eventsByDate[date] = new List<Event>();
-
-            Event ev = new(title, date, category, description);
-            eventsByDate[date].Add(ev);
-            eventCategories.Add(category);
+            eventsByDate[date].Add(new Event(title, date, category, description));
         }
 
         private void DisplayEvents(List<Event>? list = null)
@@ -57,10 +48,9 @@ namespace MunicipalServicesApp
             var display = list ?? eventsByDate.SelectMany(kv => kv.Value);
 
             foreach (var ev in display)
-            {
                 dgvEvents.Rows.Add(ev.Title, ev.Date.ToShortDateString(), ev.Category, ev.Description);
-            }
-            lblSummary.Text = $"{dgvEvents.Rows.Count} events displayed.";
+
+            lblRecommendations.Text = list == null ? "Showing all events." : "Filtered results displayed below.";
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -68,74 +58,81 @@ namespace MunicipalServicesApp
             string keyword = txtSearch.Text.Trim().ToLower();
             if (string.IsNullOrWhiteSpace(keyword)) return;
 
-            recentSearches.Enqueue(keyword);
-            if (recentSearches.Count > 5) recentSearches.Dequeue();
-
-            List<Event> results = new();
-
-            foreach (var pair in eventsByDate)
-            {
-                foreach (var ev in pair.Value)
-                {
-                    if (ev.Title.ToLower().Contains(keyword) ||
-                        ev.Category.ToLower().Contains(keyword) ||
-                        ev.Description.ToLower().Contains(keyword))
-                    {
-                        results.Add(ev);
-                    }
-                }
-            }
+            // --- Search for matches ---
+            List<Event> results = eventsByDate
+                .SelectMany(x => x.Value)
+                .Where(ev => ev.Title.ToLower().Contains(keyword)
+                          || ev.Category.ToLower().Contains(keyword)
+                          || ev.Description.ToLower().Contains(keyword))
+                .ToList();
 
             DisplayEvents(results);
-            GenerateRecommendations(keyword);
+            GenerateRecommendations(keyword, results);
+            btnShowAll.Visible = true;
         }
 
-        private void GenerateRecommendations(string keyword)
+        private void btnShowAll_Click(object sender, EventArgs e)
         {
-            recommendations.Clear();
-            foreach (var pair in eventsByDate)
+            txtSearch.Clear();
+            DisplayEvents();
+            lblRecommendations.Text = "Showing all events.";
+            btnShowAll.Visible = false;
+        }
+
+        private void GenerateRecommendations(string keyword, List<Event> currentResults)
+        {
+            var allEvents = eventsByDate.SelectMany(kv => kv.Value).ToList();
+
+            // --- Step 1: Determine dominant category among search results ---
+            string? mainCategory = currentResults
+                .GroupBy(e => e.Category)
+                .OrderByDescending(g => g.Count())
+                .Select(g => g.Key)
+                .FirstOrDefault();
+
+            // --- Step 2: Find similar events ---
+            List<Event> related = new();
+
+            if (!string.IsNullOrEmpty(mainCategory))
             {
-                foreach (var ev in pair.Value)
-                {
-                    int score = 0;
-                    if (ev.Category.ToLower().Contains(keyword)) score += 3;
-                    if (ev.Title.ToLower().Contains(keyword)) score += 2;
-                    if (ev.Description.ToLower().Contains(keyword)) score += 1;
-                    if (score > 0) recommendations.Enqueue(ev, -score);
-                }
+                // Priority 1: Events from the same category but not already shown
+                related = allEvents
+                    .Where(e => !currentResults.Contains(e)
+                             && e.Category.Equals(mainCategory, StringComparison.OrdinalIgnoreCase))
+                    .Take(3)
+                    .ToList();
             }
 
-            if (recommendations.Count == 0)
+            // Priority 2: If still less than 3, add keyword-based matches
+            if (related.Count < 3)
             {
-                lblRecommendations.Text = "No recommendations found.";
+                var keywordMatches = allEvents
+                    .Where(e => !currentResults.Contains(e)
+                             && (e.Title.ToLower().Contains(keyword)
+                              || e.Description.ToLower().Contains(keyword)
+                              || e.Category.ToLower().Contains(keyword)))
+                    .Except(related)
+                    .Take(3 - related.Count)
+                    .ToList();
+                related.AddRange(keywordMatches);
+            }
+
+            // --- Step 3: Display nicely ---
+            if (related.Count == 0)
+            {
+                lblRecommendations.Text = "You might also like:\nNo other related events found.";
                 return;
             }
 
-            lblRecommendations.Text = "You might also like:\n";
-            int count = 0;
-            while (recommendations.Count > 0 && count < 3)
-            {
-                Event rec = recommendations.Dequeue();
-                lblRecommendations.Text += $"- {rec.Title} ({rec.Category}) on {rec.Date:d}\n";
-                count++;
-            }
-        }
-
-        private void dgvEvents_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                var ev = new Event(
-                    dgvEvents.Rows[e.RowIndex].Cells[0].Value.ToString(),
-                    DateTime.Parse(dgvEvents.Rows[e.RowIndex].Cells[1].Value.ToString()),
-                    dgvEvents.Rows[e.RowIndex].Cells[2].Value.ToString(),
-                    dgvEvents.Rows[e.RowIndex].Cells[3].Value.ToString());
-                viewedEvents.Push(ev);
-            }
+            lblRecommendations.Text = "You might also like:\n" +
+                string.Join("\n", related.Select(r => $"- {r.Title} ({r.Category}) on {r.Date:d}"));
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            var main = new MainMenuForm();
+            main.ShowDialog();
             this.Close();
         }
     }

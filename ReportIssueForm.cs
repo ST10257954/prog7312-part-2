@@ -149,7 +149,7 @@ namespace MunicipalServicesApp
             detailsGrid.Controls.Add(rtbDescription, 1, 3);
 
             // RIGHT: Modes & engagement (implements the chosen strategy)  (Microsoft, 2025)
-            var modes = MakeCard(innerPadding: 16); 
+            var modes = MakeCard(innerPadding: 16);
             topGrid.Controls.Add(modes, 1, 0);
 
             var modesGrid = new TableLayoutPanel

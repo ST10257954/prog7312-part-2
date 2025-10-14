@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "eMRqdeplrak08gke96jBWxsvZjzNFThD5g6/AyG5hnIRjt/rrM3x+Yxe1RA4rqC4d7fURWdexTEA4kT2Y/Nrjw==",
+  "dgSpecHash": "++Rz1uLgjx5P1jNy4P9eTYiSGaGmBsrZP4s6YRvZQZkXjyHP/sepEnMXr4ARhcKYnuOy58YqKytGgOUjcX7yYQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\OEM\\Documents\\Visual Studio 2022\\MunicipalServicesApp\\MunicipalServicesApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\OEM\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512"
+  ],
   "logs": []
 }
