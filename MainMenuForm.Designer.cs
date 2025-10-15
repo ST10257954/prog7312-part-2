@@ -25,15 +25,16 @@ namespace MunicipalServicesApp
 
         private void InitializeComponent()
         {
-            this.pnlCard = new Panel();
-            this.lblHeader = new Label();
-            this.btnReportIssues = new Button();
-            this.btnLocalEvents = new Button();
-            this.btnStatus = new Button();
-            this.lblFooter = new Label();
-            this.SuspendLayout();
+            // UI elements
+            pnlCard = new Panel();
+            lblHeader = new Label();
+            btnReportIssues = new Button();
+            btnLocalEvents = new Button();
+            btnStatus = new Button();
+            lblFooter = new Label();
+            SuspendLayout();
 
-            // === FORM ===
+            // Form setup
             this.ClientSize = new Size(720, 520);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Municipal Services Portal";
@@ -43,91 +44,89 @@ namespace MunicipalServicesApp
             this.Paint += MainMenuForm_Paint;
             this.BackColor = Color.White;
 
-            // === HEADER (Emerald Banner) ===
-            this.lblHeader.Text = "Municipal Services Portal";
-            this.lblHeader.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
-            this.lblHeader.ForeColor = Color.White;
-            this.lblHeader.Size = new Size(480, 70);
-            this.lblHeader.TextAlign = ContentAlignment.MiddleCenter;
-            this.lblHeader.BackColor = Color.Transparent;
-            this.lblHeader.Location = new Point((720 - 480) / 2, 90);
-            this.lblHeader.Paint += lblHeader_Paint;
+            // Header
+            lblHeader.Text = "Municipal Services Portal";
+            lblHeader.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold);
+            lblHeader.ForeColor = Color.White;
+            lblHeader.Size = new Size(480, 70);
+            lblHeader.TextAlign = ContentAlignment.MiddleCenter;
+            lblHeader.BackColor = Color.Transparent;
+            lblHeader.Location = new Point((720 - 480) / 2, 90);
+            lblHeader.Paint += lblHeader_Paint;
 
-            // === CARD ===
-            this.pnlCard.Size = new Size(480, 250);
-            this.pnlCard.Location = new Point((720 - 480) / 2, 170);
-            this.pnlCard.Paint += pnlCard_Paint;
-            this.pnlCard.BackColor = Color.Transparent;
+            // Card panel
+            pnlCard.Size = new Size(480, 250);
+            pnlCard.Location = new Point((720 - 480) / 2, 170);
+            pnlCard.Paint += pnlCard_Paint;
+            pnlCard.BackColor = Color.Transparent;
 
             Font btnFont = new Font("Segoe UI", 12F);
             Color baseColor = Color.White;
             Color hoverColor = Color.FromArgb(240, 245, 240);
             Size btnSize = new Size(440, 55);
 
-            // Report Issues
-            this.btnReportIssues.FlatStyle = FlatStyle.Flat;
-            this.btnReportIssues.FlatAppearance.BorderSize = 0;
-            this.btnReportIssues.Font = btnFont;
-            this.btnReportIssues.ForeColor = Color.FromArgb(40, 40, 40);
-            this.btnReportIssues.BackColor = baseColor;
-            this.btnReportIssues.Size = btnSize;
-            this.btnReportIssues.Location = new Point(20, 25);
-            this.btnReportIssues.Text = "📋  Report Issues";
-            this.btnReportIssues.TextAlign = ContentAlignment.MiddleLeft;
-            this.btnReportIssues.Padding = new Padding(25, 0, 0, 0);
-            this.btnReportIssues.MouseEnter += (s, e) => this.btnReportIssues.BackColor = hoverColor;
-            this.btnReportIssues.MouseLeave += (s, e) => this.btnReportIssues.BackColor = baseColor;
-            this.btnReportIssues.Click += btnReportIssues_Click;
+            // Report Issues button
+            btnReportIssues.FlatStyle = FlatStyle.Flat;
+            btnReportIssues.FlatAppearance.BorderSize = 0;
+            btnReportIssues.Font = btnFont;
+            btnReportIssues.ForeColor = Color.FromArgb(40, 40, 40);
+            btnReportIssues.BackColor = baseColor;
+            btnReportIssues.Size = btnSize;
+            btnReportIssues.Location = new Point(20, 25);
+            btnReportIssues.Text = "📋  Report Issues";
+            btnReportIssues.TextAlign = ContentAlignment.MiddleLeft;
+            btnReportIssues.Padding = new Padding(25, 0, 0, 0);
+            btnReportIssues.MouseEnter += (s, e) => btnReportIssues.BackColor = hoverColor;
+            btnReportIssues.MouseLeave += (s, e) => btnReportIssues.BackColor = baseColor;
+            btnReportIssues.Click += btnReportIssues_Click;
 
-            // Local Events
-            this.btnLocalEvents.FlatStyle = FlatStyle.Flat;
-            this.btnLocalEvents.FlatAppearance.BorderSize = 0;
-            this.btnLocalEvents.Font = btnFont;
-            this.btnLocalEvents.ForeColor = Color.FromArgb(40, 40, 40);
-            this.btnLocalEvents.BackColor = baseColor;
-            this.btnLocalEvents.Size = btnSize;
-            this.btnLocalEvents.Location = new Point(20, 95);
-            this.btnLocalEvents.Text = "📅  Local Events  Announcements";
-            this.btnLocalEvents.TextAlign = ContentAlignment.MiddleLeft;
-            this.btnLocalEvents.Padding = new Padding(25, 0, 0, 0);
-            this.btnLocalEvents.MouseEnter += (s, e) => this.btnLocalEvents.BackColor = hoverColor;
-            this.btnLocalEvents.MouseLeave += (s, e) => this.btnLocalEvents.BackColor = baseColor;
-            this.btnLocalEvents.Click += btnLocalEvents_Click;
+            // Local Events button
+            btnLocalEvents.FlatStyle = FlatStyle.Flat;
+            btnLocalEvents.FlatAppearance.BorderSize = 0;
+            btnLocalEvents.Font = btnFont;
+            btnLocalEvents.ForeColor = Color.FromArgb(40, 40, 40);
+            btnLocalEvents.BackColor = baseColor;
+            btnLocalEvents.Size = btnSize;
+            btnLocalEvents.Location = new Point(20, 95);
+            btnLocalEvents.Text = "📅  Local Events  Announcements";
+            btnLocalEvents.TextAlign = ContentAlignment.MiddleLeft;
+            btnLocalEvents.Padding = new Padding(25, 0, 0, 0);
+            btnLocalEvents.MouseEnter += (s, e) => btnLocalEvents.BackColor = hoverColor;
+            btnLocalEvents.MouseLeave += (s, e) => btnLocalEvents.BackColor = baseColor;
+            btnLocalEvents.Click += btnLocalEvents_Click;
 
-            // Status (Disabled)
-            this.btnStatus.FlatStyle = FlatStyle.Flat;
-            this.btnStatus.FlatAppearance.BorderSize = 0;
-            this.btnStatus.Font = btnFont;
-            this.btnStatus.ForeColor = Color.Gray;
-            this.btnStatus.BackColor = baseColor;
-            this.btnStatus.Enabled = false;
-            this.btnStatus.Size = btnSize;
-            this.btnStatus.Location = new Point(20, 165);
-            this.btnStatus.Text = "🕓  Service Request Status (coming soon)";
-            this.btnStatus.TextAlign = ContentAlignment.MiddleLeft;
-            this.btnStatus.Padding = new Padding(25, 0, 0, 0);
+            // Status button (disabled)
+            btnStatus.FlatStyle = FlatStyle.Flat;
+            btnStatus.FlatAppearance.BorderSize = 0;
+            btnStatus.Font = btnFont;
+            btnStatus.ForeColor = Color.Gray;
+            btnStatus.BackColor = baseColor;
+            btnStatus.Enabled = false;
+            btnStatus.Size = btnSize;
+            btnStatus.Location = new Point(20, 165);
+            btnStatus.Text = "🕓  Service Request Status (coming soon)";
+            btnStatus.TextAlign = ContentAlignment.MiddleLeft;
+            btnStatus.Padding = new Padding(25, 0, 0, 0);
 
-            // === FOOTER ===
-            this.lblFooter.Font = new Font("Segoe UI", 9F);
-            this.lblFooter.ForeColor = Color.FromArgb(120, 120, 120);
-            this.lblFooter.Text = "© 2025 City of Tshwane | Powered by Municipal Portal";
-            this.lblFooter.Dock = DockStyle.Bottom;
-            this.lblFooter.TextAlign = ContentAlignment.MiddleCenter;
-            this.lblFooter.Height = 40;
+            // Footer
+            lblFooter.Font = new Font("Segoe UI", 9F);
+            lblFooter.ForeColor = Color.FromArgb(120, 120, 120);
+            lblFooter.Text = "© 2025 City of Tshwane | Powered by Municipal Portal";
+            lblFooter.Dock = DockStyle.Bottom;
+            lblFooter.TextAlign = ContentAlignment.MiddleCenter;
+            lblFooter.Height = 40;
 
-            // Add buttons
-            this.pnlCard.Controls.Add(this.btnReportIssues);
-            this.pnlCard.Controls.Add(this.btnLocalEvents);
-            this.pnlCard.Controls.Add(this.btnStatus);
-
-            this.Controls.Add(this.lblHeader);
-            this.Controls.Add(this.pnlCard);
-            this.Controls.Add(this.lblFooter);
-
-            this.ResumeLayout(false);
+            // Add controls
+            pnlCard.Controls.Add(btnReportIssues);
+            pnlCard.Controls.Add(btnLocalEvents);
+            pnlCard.Controls.Add(btnStatus);
+            Controls.Add(lblHeader);
+            Controls.Add(pnlCard);
+            Controls.Add(lblFooter);
+            ResumeLayout(false);
         }
 
-        // Header Paint (Rounded Emerald Banner)
+        // Header gradient
         private void lblHeader_Paint(object sender, PaintEventArgs e)
         {
             Rectangle rect = new Rectangle(0, 0, lblHeader.Width, lblHeader.Height);
@@ -154,7 +153,7 @@ namespace MunicipalServicesApp
                 rect, Color.White, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
         }
 
-        // Card shadow + white fill
+        // Card panel design
         private void pnlCard_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;

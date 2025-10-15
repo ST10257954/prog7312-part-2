@@ -10,12 +10,14 @@ namespace MunicipalServicesApp
             InitializeComponent();
         }
 
+        // Open Report Issue form
         private void btnReportIssues_Click(object sender, EventArgs e)
         {
             using (var form = new ReportIssueForm())
                 form.ShowDialog();
         }
 
+        // Open Local Events form
         private void btnLocalEvents_Click(object sender, EventArgs e)
         {
             using (var form = new EventsForm())

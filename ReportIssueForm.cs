@@ -40,7 +40,7 @@ namespace MunicipalServicesApp
         private void InitializeComponent() { }
 
 
-        // ---------- UI ----------
+        //User-interface
         private void BuildUi()
         {
             // Window setup
@@ -51,7 +51,7 @@ namespace MunicipalServicesApp
             Font = new Font("Segoe UI", 10.5f);
             MinimumSize = new Size(980, 600);
 
-            // Root: Header | Content | Footer | Status
+            
             var root = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -286,7 +286,7 @@ namespace MunicipalServicesApp
             UpdateStatusBar();
         }
 
-        // ---------- UI helpers ----------
+        //UI helpers 
         private Panel MakeCard(int innerPadding = 0)
         {
             return new Panel
@@ -401,7 +401,7 @@ namespace MunicipalServicesApp
             lblEstimate.Text = $"Estimated upload size: ~{Math.Max(1, bytes / 1024)} KB";
         }
 
-        // ---------- Events ----------
+        //Events 
         private void BtnAddAttachment_Click(object sender, EventArgs e)
         {
             using var ofd = new OpenFileDialog

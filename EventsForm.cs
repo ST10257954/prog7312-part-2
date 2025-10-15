@@ -9,11 +9,11 @@ namespace MunicipalServicesApp
 {
     public partial class EventsForm : Form
     {
-        // === Core structures ===
-        private readonly SortedDictionary<DateTime, List<Event>> eventsByDate = new();
-        private readonly Queue<string> searchHistory = new();      // remembers last 5 search keywords
-        private readonly Stack<Event> recentlyViewed = new();       // tracks recently viewed events
-        private readonly HashSet<string> uniqueCategories = new();  // ensures unique event categories
+        // Core data structures
+        private readonly SortedDictionary<DateTime, List<Event>> eventsByDate = new(); //(geeksforgeeks, 2025)
+        private readonly Queue<string> searchHistory = new();      // Stores last 5 searches (Alexandra, 2017)
+        private readonly Stack<Event> recentlyViewed = new();      // Tracks recently viewed events (Mooney, 2022)
+        private readonly HashSet<string> uniqueCategories = new(); // Stores unique event categories  (w3schools, n.d.)
 
         public EventsForm()
         {
@@ -21,12 +21,10 @@ namespace MunicipalServicesApp
             Load += EventsForm_Load;
         }
 
-        /// <summary>
-        /// Loads demo events and sets up the DataGridView click handler.
-        /// </summary>
+        
         private void EventsForm_Load(object sender, EventArgs e)
         {
-            // --- Demo data ---
+            //Demo data
             AddEvent("Heritage Day Celebration", new DateTime(2025, 9, 24), "Cultural", "Parade and food market.");
             AddEvent("Heritage Business Expo", new DateTime(2025, 10, 25), "Business", "Support local businesses.");
             AddEvent("Job Fair", new DateTime(2025, 10, 28), "Employment", "Meet local companies hiring youth.");
@@ -38,28 +36,21 @@ namespace MunicipalServicesApp
             AddEvent("Holiday Food Drive", new DateTime(2025, 12, 5), "Charity", "Donate food & support families.");
             AddEvent("Art in the Park", new DateTime(2025, 12, 10), "Arts", "Outdoor art exhibition & workshops.");
 
-            // handle cell clicks for recently viewed events
             dgvEvents.CellClick += DgvEvents_CellClick;
-
             DisplayEvents();
             btnShowAll.Visible = false;
         }
 
-        /// <summary>
-        /// Adds a new event and stores it by date and category.
-        /// </summary>
         private void AddEvent(string title, DateTime date, string category, string description)
         {
             if (!eventsByDate.ContainsKey(date))
                 eventsByDate[date] = new List<Event>();
             eventsByDate[date].Add(new Event(title, date, category, description));
 
-            uniqueCategories.Add(category); // maintain unique set
+            uniqueCategories.Add(category);
         }
 
-        /// <summary>
-        /// Displays either all events or a filtered list.
-        /// </summary>
+     
         private void DisplayEvents(List<Event>? list = null)
         {
             dgvEvents.Rows.Clear();
@@ -71,9 +62,6 @@ namespace MunicipalServicesApp
             lblRecommendations.Text = list == null ? "Showing all events." : "Filtered results displayed below.";
         }
 
-        /// <summary>
-        /// Handles Search button clicks, updating UI and data structures.
-        /// </summary>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string keyword = txtSearch.Text.Trim().ToLower();
@@ -84,12 +72,12 @@ namespace MunicipalServicesApp
                 return;
             }
 
-            // keep only last 5 searches
+            // Maintain search history (max 5) (Nicholas, 2012)
             if (searchHistory.Count >= 5)
                 searchHistory.Dequeue();
             searchHistory.Enqueue(keyword);
 
-            // perform search
+            // Search events
             var results = eventsByDate
                 .SelectMany(kv => kv.Value)
                 .Where(ev => ev.Title.ToLower().Contains(keyword)
@@ -105,7 +93,6 @@ namespace MunicipalServicesApp
                 return;
             }
 
-            // push found items onto recently viewed stack
             foreach (var ev in results)
                 recentlyViewed.Push(ev);
 
@@ -117,9 +104,7 @@ namespace MunicipalServicesApp
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        /// <summary>
-        /// Restores full event list and clears search box.
-        /// </summary>
+ 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
             txtSearch.Clear();
@@ -128,21 +113,17 @@ namespace MunicipalServicesApp
             btnShowAll.Visible = false;
         }
 
-        /// <summary>
-        /// Generates smart recommendations based on category, keyword, and trending searches.
-        /// </summary>
+   
         private void GenerateRecommendations(string keyword, List<Event> currentResults)
         {
             var allEvents = eventsByDate.SelectMany(kv => kv.Value).ToList();
 
-            // Step 1: determine dominant category among search results
             string? mainCategory = currentResults
                 .GroupBy(e => e.Category)
                 .OrderByDescending(g => g.Count())
                 .Select(g => g.Key)
                 .FirstOrDefault();
 
-            // Step 2: find related events
             List<Event> related = new();
 
             if (!string.IsNullOrEmpty(mainCategory))
@@ -154,7 +135,6 @@ namespace MunicipalServicesApp
                     .ToList();
             }
 
-            // Step 3: include keyword-based matches if fewer than 3
             if (related.Count < 3)
             {
                 var keywordMatches = allEvents
@@ -168,7 +148,6 @@ namespace MunicipalServicesApp
                 related.AddRange(keywordMatches);
             }
 
-            // Step 4: use trending search history if still less than 3
             var frequentTerm = searchHistory.GroupBy(s => s)
                 .OrderByDescending(g => g.Count())
                 .Select(g => g.Key)
@@ -185,7 +164,6 @@ namespace MunicipalServicesApp
                 related.AddRange(trending);
             }
 
-            // Step 5: display
             if (related.Count == 0)
             {
                 lblRecommendations.Text = "You might also like:\nNo other related events found.";
@@ -196,9 +174,6 @@ namespace MunicipalServicesApp
                 string.Join("\n", related.Select(r => $"- {r.Title} ({r.Category}) on {r.Date:d}"));
         }
 
-        /// <summary>
-        /// Tracks when a user clicks an event row (adds to Stack).
-        /// </summary>
         private void DgvEvents_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < dgvEvents.Rows.Count)
@@ -215,9 +190,6 @@ namespace MunicipalServicesApp
             }
         }
 
-        /// <summary>
-        /// Returns to Main Menu.
-        /// </summary>
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -227,3 +199,20 @@ namespace MunicipalServicesApp
         }
     }
 }
+/* References 
+Alexandra, 2017. What Is a C# Queue? How It Works, and the Benefits and Challenges of Working with C# Queues. [Online] 
+Available at: https://stackify.com/what-is-csharp-queue/
+[Accessed 15 October 2025].
+geeksforgeeks, 2025. SortedDictionary Implementation in C#. [Online] 
+Available at: https://www.geeksforgeeks.org/c-sharp/sorteddictionary-implementation-in-c-sharp/
+[Accessed 13 October 2025].
+Mooney, L., 2022. Understanding the Stack and Heap in C#. [Online] 
+Available at: https://endjin.com/blog/2022/07/understanding-the-stack-and-heap-in-csharp-dotnet
+[Accessed 03 October 2025].
+Nicholas, 2012. C# Web Browser History Help. [Online] 
+Available at: https://www.c-sharpcorner.com/forums/c-sharp-web-browser-history-help
+[Accessed 03 October 2025].
+w3schools, n.d.. DSA Hash Sets. [Online] 
+Available at: https://www.w3schools.com/dsa/dsa_data_hashsets.php#:~:text=A%20Hash%20Set%20is%20a,is%20part%20of%20a%20set.
+[Accessed 03 October 2025].
+*/

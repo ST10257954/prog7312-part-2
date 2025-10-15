@@ -21,6 +21,7 @@
 
         private void InitializeComponent()
         {
+            // UI components  (Uizard, 2023)
             header = new Panel();
             lblHeader = new Label();
             txtSearch = new TextBox();
@@ -30,7 +31,7 @@
             lblRecommendations = new Label();
             btnBack = new Button();
 
-            // --- Form ---
+            // Form setup (Iannace, 2025)
             this.Text = "Local Events & Announcements";
             this.BackColor = Color.WhiteSmoke;
             this.ClientSize = new Size(920, 640);
@@ -38,7 +39,7 @@
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
 
-            // --- Header ---
+            // Header
             header.Dock = DockStyle.Top;
             header.Height = 70;
             header.BackColor = Color.FromArgb(27, 94, 32);
@@ -49,13 +50,13 @@
             lblHeader.Dock = DockStyle.Fill;
             header.Controls.Add(lblHeader);
 
-            // --- Search Box ---
+            // Search box
             txtSearch.Location = new Point(40, 90);
             txtSearch.Size = new Size(480, 32);
             txtSearch.Font = new Font("Segoe UI", 11);
             txtSearch.PlaceholderText = "Search by keyword, category, or date...";
 
-            // --- Search Button ---
+            // Search button
             btnSearch.Text = "Search";
             btnSearch.Font = new Font("Segoe UI Semibold", 11);
             btnSearch.BackColor = Color.FromArgb(46, 125, 50);
@@ -65,7 +66,7 @@
             btnSearch.Location = new Point(530, 90);
             btnSearch.Click += btnSearch_Click;
 
-            // --- Show All Button ---
+            // Show All button (Iannace, 2025)
             btnShowAll.Text = "Show All Events";
             btnShowAll.Font = new Font("Segoe UI Semibold", 11);
             btnShowAll.BackColor = Color.FromArgb(27, 94, 32);
@@ -76,7 +77,7 @@
             btnShowAll.Visible = false;
             btnShowAll.Click += btnShowAll_Click;
 
-            // --- DataGridView ---
+            // Events table (Uizard, 2023)
             dgvEvents.Location = new Point(40, 140);
             dgvEvents.Size = new Size(800, 350);
             dgvEvents.AllowUserToAddRows = false;
@@ -88,14 +89,14 @@
             dgvEvents.Columns.Add("Category", "Category");
             dgvEvents.Columns.Add("Description", "Description");
 
-            // --- Recommendations ---
+            // Recommendations label (Uizard, 2023)
             lblRecommendations.Font = new Font("Segoe UI", 10, FontStyle.Italic);
             lblRecommendations.ForeColor = Color.FromArgb(60, 60, 60);
             lblRecommendations.Location = new Point(40, 510);
             lblRecommendations.Size = new Size(700, 80);
             lblRecommendations.Text = "Recommendations will appear here...";
 
-            // --- Back to Main Menu ---
+            // Back button (Iannace, 2025)
             btnBack.Text = "Back to Main Menu";
             btnBack.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             btnBack.BackColor = Color.FromArgb(46, 125, 50);
@@ -105,6 +106,7 @@
             btnBack.Location = new Point(720, 580);
             btnBack.Click += btnBack_Click;
 
+            // Add controls
             Controls.AddRange(new Control[]
             {
                 header, txtSearch, btnSearch, btnShowAll, dgvEvents, lblRecommendations, btnBack
